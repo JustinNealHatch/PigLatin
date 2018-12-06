@@ -7,11 +7,11 @@ var digits = /\d+/
 
 
 function fromWebPage(){
-  var userInput = "queen is a number 333"
+  var userInput = document.getElementById('phrase').value;
   userInputLowerCase = userInput.toLowerCase()
+  console.log(userInput);
   return userInputLowerCase.split(/\W+/)
 }
-
 
 function prepWord(str){
   let strArr = str.split('')
@@ -63,11 +63,16 @@ function wordFilter(str){
     }
 }
 
-
 function restoreToString(sourceArray){
-  // alert (sourceArray.join(" "))
-  return sourceArray.join(" ")
-
+  var split = sourceArray.join(" ");
+  return document.getElementById("answer").innerHTML = split
 }
 
-console.log(mapString(fromWebPage()))
+function mainProgramme(){
+  var userIn = fromWebPage()
+  var pigArray = mapString(userIn)
+  restoreToString(pigArray)
+}
+
+
+// mapString(fromWebPage())
