@@ -1,6 +1,8 @@
 // var userInput = prompt("Please enter word or phrase")
 // this is to locate array index for vowels
 
+//**TO DO:  Y as a consonant and a vowel, .html windows to emulate google translate, punctuation regex, sourceArray.join is not a function error in live
+
 const vowels = ["a", "e", "i", "o", "u"]
 var digits = /\d+/
 // var  userInput = prompt('Enter words')
