@@ -2,9 +2,12 @@
 // this is to locate array index for vowels
 
 const vowels = ["a", "e", "i", "o", "u"]
+var digits = /\d+/
+// var  userInput = prompt('Enter words')
+
 
 function fromWebPage(){
-  var userInput = prompt("Please enter word or phrase")
+  var userInput = "queen is a number 333"
   userInputLowerCase = userInput.toLowerCase()
   return userInputLowerCase.split(/\W+/)
 }
@@ -39,7 +42,6 @@ return finalWord
 }
 
 function quTest(str){
-  // if str begins with qu
   var begin = str.substr(2)
   return begin + "quay"
 }
@@ -52,17 +54,20 @@ function mapString(sourceArray){
 function wordFilter(str){
     if (str.startsWith("qu")){
       return quTest(str)
-    }else if (vowels.includes(str.substr(0,1))){
-        return vowelPosition(str)
-    }else if (!str.startsWith("qu") || !vowels.includes(str.substr(0,1))){
+    }else if(digits.test(str)){
+        return str
+    }else if (!str.startsWith("qu") && !vowels.includes(str.substr(0,1))){
       return testConsonants(str)
+    }else if(vowels.includes(str.substr(0,1))){
+      return vowelPosition(str)
     }
 }
 
+
 function restoreToString(sourceArray){
-  alert (sourceArray.join(" "))
+  // alert (sourceArray.join(" "))
   return sourceArray.join(" ")
-  
+
 }
 
 console.log(mapString(fromWebPage()))
