@@ -19,6 +19,8 @@ function fromWebPage(){
 function wordFilter(str){
     if (str.startsWith("qu")){
       return quTest(str)
+    }else if(str.includes("y")){
+      return yTests(str)
     }else if(digits.test(str)){
         return str
     }else if (!str.startsWith("qu") && !vowels.includes(str.substr(0,1))){
@@ -37,23 +39,20 @@ function mapString(sourceArray){
 // Creates string and joins "way" to the string
 function vowelPosition(str){
   let strArr = str.split('')
-  // If the first letter in our array include vowel array
-  if (vowels.includes(strArr[0])){
-    //If true return string(covert!) plus add way to the end
-    return strArr.join("") + "way"
-  }
+
+    return strArr.join("") + "-way"
 }
 
 // Finds position of first vowel and substrings the constanants out the joins the words together
 function testConsonants(str){
-  let regex = /[a,e,i,o,u,y]/gi;
+  let regex = /[a,e,i,o,u]/gi;
   var match = regex.exec(str);
 if (match) {
   var x = match.index;
 }
 var cons = str.substr(0,x)
 var vow = str.substr(x)
-var finalWord = vow + cons + "ay"
+var finalWord = vow + "-" + cons + "ay"
 return finalWord
 }
 
@@ -63,11 +62,26 @@ function quTest(str){
   return begin + "quay"
 }
 
+function yTests(str){
+  if (str.startsWith('y')){
+      return str.substr(1) + "-yay"
+  }else if (str.length === 2){
+    return  `y-${str.substr(0,1)}ay`
+  }else{
+    let regex = /y/gi;
+    var match = regex.exec(str);
+    var x = match.index
+    return `${str.substr(x)}-${str.substr(0,x)}ay`
+  }
+}
+
+
+
 function hideDiv(div){
     var x = document.getElementById(div);
     if (x.style.display === "none") {
         x.style.display = "block";
-    } 
+    }
 }
 
 //converts array with all words to a string and returns to the webpage
